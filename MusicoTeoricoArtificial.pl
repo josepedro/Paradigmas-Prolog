@@ -59,3 +59,5 @@ bm(si,re,solb).
 baum(si,mib,sol).
 bdim(si,re,fa).
 
+acordesTonicaDo(Tonica,Terca,Quinta) :- cM(Tonica,Terca,Quinta);cm(Tonica,Terca,Quinta);caum(Tonica,Terca,Quinta);cdim(Tonica,Terca,Quinta).
+

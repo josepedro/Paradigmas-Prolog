@@ -54,8 +54,10 @@ bbm(sib,reb,fa).
 bbaum(sib,re,solb).
 bbdim(sib,reb,mi).
 
-bM(si,,).
-bm(si,,).
-baum(si,,).
-bdim(si,,).
+bM(si,mib,solb).
+bm(si,re,solb).
+baum(si,mib,sol).
+bdim(si,re,fa).
+
+acordesTonicaDo(Tonica,Terca,Quinta) :- cM(Tonica,Terca,Quinta),failcm(Tonica,Terca,Quinta);caum(Tonica,Terca,Quinta);cdim(Tonica,Terca,Quinta),fail.
 
