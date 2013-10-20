@@ -1,22 +1,22 @@
-terca(mi,do).
-terca(solb,re).
-terca(lab,mi).
-terca(la,fa).
-terca(si,sol).
-terca(reb,la).
-terca(mib,si).
+tercaMaior(do,mi).
+tercaMaior(re,solb).
+tercaMaior(mi,lab).
+tercaMaior(fa,la).
+tercaMaior(sol,si).
+tercaMaior(la,reb).
+tercaMaior(si,mib).
 
-quinta(sol,do).
-quinta(la,re).
-quinta(si,mi).
-quinta(do,fa).
-quinta(re,sol).
-quinta(mi,la).
-quinta(solb,si).
+quintaJusta(do,sol).
+quintaJusta(re,la).
+quintaJusta(mi,si).
+quintaJusta(fa,do).
+quintaJusta(sol,re).
+quintaJusta(la,mi).
+quintaJusta(si,solb).
 
 acorde_maior(TONICA,NOTA1,NOTA2):-
-		terca(NOTA1,TONICA),
-		quinta(NOTA2,TONICA).
+		tercaMaior(TONICA,NOTA1),
+		quintaJusta(TONICA,NOTA2).
 		
 
 
