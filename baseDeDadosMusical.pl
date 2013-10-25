@@ -1,66 +1,73 @@
-terca_maior(mi,do).
-terca_maior(solb,re).
-terca_maior(lab,mi).
-terca_maior(la,fa).
-terca_maior(si,sol).
-terca_maior(reb,la).
-terca_maior(mib,si).
+% Definicao das tercas maiores
+terca_maior(do,mi).
+terca_maior(re,solb).
+terca_maior(mi,lab).
+terca_maior(fa,la).
+terca_maior(sol,si).
+terca_maior(la,reb).
+terca_maior(si,mib).
 
-terca_menor(mib,do).
-terca_menor(fa,re).
-terca_menor(sol,mi).
-terca_menor(lab,fa).
-terca_menor(sib,sol).
-terca_menor(do,la).
-terca_menor(re,si).
+% Definicao das tercas menores
+terca_menor(do,mib).
+terca_menor(re,fa).
+terca_menor(mi,sol).
+terca_menor(fa,lab).
+terca_menor(sol,sib).
+terca_menor(la,do).
+terca_menor(si,re).
 
-quinta(sol,do).
-quinta(la,re).
-quinta(sa,mi).
-quinta(do,fa).
-quinta(re,sol).
-quinta(mi,la).
-quinta(solb,si).
+% Definicao das quintas justas
+quinta_justa(do,sol).
+quinta_justa(re,la).
+quinta_justa(mi,si).
+quinta_justa(fa,do).
+quinta_justa(sol,re).
+quinta_justa(la,mi).
+quinta_justa(si,solb).
 
+% Definicao de acordes maiores
 acorde_maior(TONICA,TERCA,QUINTA):-
-		terca_maior(TERCA,TONICA),
-		quinta(QUINTA,TONICA).
+		terca_maior(TONICA,TERCA),
+		quinta_justa(TONICA,QUINTA).
+% acorde_maior(desconhecida,NOTA1,NOTA2).
+% acorde_maior(TONICA,desconhecida,NOTA2).
+% acorde_maior(TONICA,NOTA1,desconhecida).
 
-acorde_maior(desconhecida,NOTA1,NOTA2).
-acorde_maior(TONICA,desconhecida,NOTA2).
-acorde_maior(TONICA,NOTA1,desconhecida).
-
+% Definicao de acordes menores
 acorde_menor(TONICA,TERCA,QUINTA):-
-		terca_menor(TERCA,TONICA),
-		quinta(QUINTA,TONICA).
+		terca_menor(TONICA,TERCA),
+		quinta_justa(TONICA,QUINTA).
+% acorde_menor(desconhecida,TERCA,QUINTA).
+% acorde_menor(TONICA,desconhecida,QUINTA).
+% acorde_menor(TONICA,TERCA,desconhecida).
 
-acorde_menor(desconhecida,TERCA,QUINTA).
-acorde_menor(TONICA,desconhecida,QUINTA).
-acorde_menor(TONICA,TERCA,desconhecida).
+% Definicao dos acordes em relacao as suas tercas maiores
+acorde(do_Maior,terca_maior(do,mi)).
+acorde(re_Maior,terca_maior(re,solb)).
+acorde(mi_Maior,terca_maior(mi,lab)).
+acorde(fa_Maior,terca_maior(fa,la)).
+acorde(sol_Maior,terca_maior(sol,si)).
+acorde(la_Maior,terca_maior(la,reb)).
+acorde(si_Maior,terca_maior(si,mib)).
 
-acorde(do_Maior,terca_maior(mi,do)).
-acorde(re_Maior,terca_maior(solb,re)).
-acorde(mi_Maior,terca_maior(lab,mi)).
-acorde(fa_Maior,terca_maior(la,fa)).
-acorde(sol_Maior,terca_maior(si,sol)).
-acorde(la_Maior,terca_maior(reb,la)).
-acorde(si_Maior,terca_maior(mib,si)).
+% Definicao dos acordes em relacao as suas tercas maiores
+acorde(do_Menor,terca_menor(do,mib)).
+acorde(re_Menor,terca_menor(re,fa)).
+acorde(mi_Menor,terca_menor(mi,sol)).
+acorde(fa_Menor,terca_menor(fa,lab)).
+acorde(sol_Menor,terca_menor(sol,sib)).
+acorde(la_Menor,terca_menor(la,do)).
+acorde(si_Menor,terca_menor(si,re)).
 
-acorde(do_Menor,terca_menor(mib,do)).
-acorde(re_Menor,terca_menor(fa,re)).
-acorde(mi_Menor,terca_menor(sol,mi)).
-acorde(fa_Menor,terca_menor(lab,fa)).
-acorde(sol_Menor,terca_menor(sib,sol)).
-acorde(la_Menor,terca_menor(do,la)).
-acorde(si_Menor,terca_menor(re,si)).
-
+% Relacao dos acordes maiores com tonica, terca e quinta
 acordeMaior(ACORDE,TONICA,TERCA,QUINTA):-
-		acorde(ACORDE,terca_maior(TERCA,TONICA)),
-		quinta(QUINTA,TONICA).
+		acorde(ACORDE,terca_maior(TONICA,TERCA)),
+		quinta(TONICA,QUINTA).
 
+% Relacao dos acordes menores com tonica, terca e quinta
 acordeMenor(ACORDE,TONICA,TERCA,QUINTA):-
-		acorde(ACORDE,terca_menor(TERCA,TONICA)),
-		quinta(QUINTA,TONICA).
+		acorde(ACORDE,terca_menor(TONICA,TERCA)),
+		quinta(TONICA,QUINTA).
 
 
 		
